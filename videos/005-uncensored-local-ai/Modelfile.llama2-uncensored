@@ -1,0 +1,16 @@
+# Fixed chat template for TheBloke uncensored Llama2 from Hugging Face
+FROM hf.co/TheBloke/llama2_7b_chat_uncensored-GGUF:Q4_K_M
+
+TEMPLATE """{{ if .System }}### System:
+{{ .System }}
+
+{{ end }}### Human:
+{{ .Prompt }}
+
+### Assistant:
+"""
+
+PARAMETER stop "### Human:"
+PARAMETER stop "### Assistant:"
+PARAMETER temperature 0.7
+PARAMETER num_ctx 4096
